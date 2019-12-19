@@ -1,4 +1,10 @@
+import { IsString, IsInt, IsUrl } from 'class-validator';
+
 export class Item {
-  readonly name: string;
-  readonly price: number;
+  id: number;
+  @IsString() readonly name: string;
+
+  @IsInt() readonly price: number;
+
+  @IsUrl() readonly image: string;
 }
