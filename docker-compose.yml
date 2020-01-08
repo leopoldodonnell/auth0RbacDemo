@@ -1,4 +1,6 @@
 # Documentation
+#
+# This is a generic docker-compose file for running a dev nestjs app
 # https://docs.docker.com/compose/compose-file
 
 version: '3'
