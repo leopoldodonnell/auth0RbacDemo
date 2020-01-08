@@ -1,5 +1,4 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { CreateItemDto } from './create-item.dto';
 import { Item } from './item.interface';
 
 @Injectable()
@@ -12,6 +11,12 @@ export class ItemsService {
       Logger.log(`item[0] = ${JSON.stringify(this.items[0])}`);
     }
     return this.items;
+  }
+
+  find(id: number): Item {
+    return this.items.find((value: Item, index: number, items: Item[]) => {
+      return value.id === id;
+    });
   }
 
   create(item: Item) {

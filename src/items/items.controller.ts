@@ -33,7 +33,6 @@ export class ItemsController {
   @Get('/all')
   @Permissions('read:items')
   async findItAll(): Promise<Item[]> {
-    const items = this.itemsService.findAll();
     return this.itemsService.findAll();
   }
 
@@ -58,5 +57,13 @@ export class ItemsController {
   @Permissions('delete:items')
   delete(@Param('id') id: number) {
     this.itemsService.delete(id);
+  }
+
+  @UseGuards(AuthGuard('jwt'), PermissionsGuard)
+  @Get()
+  @Permissions('read:items')
+  async find(@Param('id') id: number): Promise<Item> {
+    const item: Item = this.itemsService.find(id);
+    return item;
   }
 }

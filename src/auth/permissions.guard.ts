@@ -11,7 +11,9 @@ export class PermissionsGuard implements CanActivate {
   ): boolean | Promise<boolean> | Observable<boolean> {
     const routePermissions = this.reflector.get<string[]>('permissions', context.getHandler());
 
-    const usePermissions = context.getArgs()[0].user.permissions;
+    const first = context.getArgs()[0];
+    const user = first.user;
+    const usePermissions = user.permissions;
 
     if (!routePermissions) {
       return true;
