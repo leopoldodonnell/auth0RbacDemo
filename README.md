@@ -7,7 +7,7 @@ description
 ## Installation
 
 ```bash
-$ docker-compose app yarn install
+$ docker-compose run app yarn install
 ```
 
 ## Running the app
